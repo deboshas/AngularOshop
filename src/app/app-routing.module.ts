@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'admin/products', component: ManageProductsComponent },
   { path: 'admin/orders', component: AdminOrdersComponent },
   { path: 'my-orders', component: MyOrdersComponent },
+  { path: 'login', component: LoginComponent },
 
 ];
 

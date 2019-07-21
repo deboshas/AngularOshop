@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { AuthguardService } from './authguard.service';
 import { UserService } from './user.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserService } from './user.service';
     MyOrdersComponent,
     ManageProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

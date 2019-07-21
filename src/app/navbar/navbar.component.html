@@ -8,18 +8,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
 
-            <li *ngIf="!(this.authService.AuthStatus | async)" class=" nav-item">
+            <li *ngIf="!appUser" class=" nav-item">
                 <a class="nav-link" [routerLink]="['/login']">Log in</a>
             </li>
-            <li *ngIf="(this.authService.AuthStatus | async) as user " class="nav-item dropdown" ngbDropdown>
+            <li *ngIf="appUser" class="nav-item dropdown" ngbDropdown>
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
-                    {{user.displayName}}
+                    {{appUser.name}}
                 </a>
                 <div ngbDropdownMenu class="dropdown-menu " aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" [routerLink]="['/my-orders']">My orders</a>
-                    <a class="dropdown-item" [routerLink]="['/admin/products']">Manager Orders</a>
-                    <a class="dropdown-item" [routerLink]="['/admin/orders']">Manage Products</a>
+                    <a class="dropdown-item" *ngIf="appUser.isAdmin" [routerLink]="['/admin/products']">Manager
+                        Orders</a>
+                    <a class="dropdown-item" *ngIf="appUser.isAdmin" [routerLink]="['/admin/orders']">Manage
+                        Products</a>
                     <a class="dropdown-item" (click)="logout()">LogOut</a>
                 </div>
             </li>

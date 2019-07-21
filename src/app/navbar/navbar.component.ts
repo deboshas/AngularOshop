@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
+import { user } from '../models/user';
 
 @Component({
   selector: 'navbar',
@@ -10,7 +12,7 @@ import { AuthService } from '../auth.service';
 export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed = true;
-  //user$: any;
+  appUser: user;
   constructor(private authService: AuthService) {
     //this.user$ = this.authService.AuthStatus;
 
@@ -18,6 +20,8 @@ export class NavbarComponent implements OnInit {
     //   this.user = x;
     //   console.log('firebase user details', this.user);
     // })
+    this.authService.getAppUser().subscribe(user => this.appUser = user);
+
   }
 
   ngOnInit() {

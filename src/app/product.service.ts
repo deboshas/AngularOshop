@@ -16,4 +16,14 @@ export class ProductService {
 
 
   }
+  getAll() {
+    return this.db.list("/products").valueChanges();
+
+
+  }
+
+  getProduct(productId) {
+
+    return this.db.object("/products/" + productId).valueChanges();
+  }
 }

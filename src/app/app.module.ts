@@ -17,19 +17,18 @@ import { OrderSuccessModule } from './order-success/order-success.module';
 import { ProductsModule } from './products/products.module';
 import { AuthService } from './shared/auth.service';
 import { UserService } from './shared/user.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    LoginModule,
+    AppRoutingModule,
+    NavbarModule,
     HomeModule,
     AdminModule,
     CheckOutModule,
@@ -38,8 +37,6 @@ import { UserService } from './shared/user.service';
     NavbarModule,
     OrderSuccessModule,
     ProductsModule,
-
-
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]

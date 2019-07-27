@@ -14,6 +14,6 @@ import { AuthService } from '../shared/auth.service';
     SharedModule
   ],
   providers: [AuthService],
-  bootstrap: [NavbarComponent]
+  exports: [NavbarComponent]
 })
 export class NavbarModule { }

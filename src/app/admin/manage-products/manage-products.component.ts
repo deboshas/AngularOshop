@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/product.service';
+import { ProductService } from 'src/app/shared/product.service';
+
 
 @Component({
   selector: 'app-manage-products',
@@ -8,7 +9,8 @@ import { ProductService } from 'src/app/product.service';
 })
 export class ManageProductsComponent implements OnInit {
   products: any[];
-  displayedColumns: string[] = ['Title', 'Price', 'Action'];
+  displayedColumns: string[] = ['Title', 'Price', 'Key'];
+
 
   constructor(private productService: ProductService) {
 
@@ -16,6 +18,7 @@ export class ManageProductsComponent implements OnInit {
     this.productService.getAll().subscribe(products => {
 
       this.products = products;
+
       console.log(this.products);
     })
 

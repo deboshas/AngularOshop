@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
-import { ProductService } from 'src/app/product.service';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { map, take } from 'rxjs/operators';
+import { CategoryService } from 'src/app/shared/category.service';
+import { ProductService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'product-form',
@@ -12,17 +13,28 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProductFormComponent implements OnInit {
 
   categories$;
+  categories: any[];
   product: any;
-  constructor(private categorySrrvice: CategoryService
+  constructor(private categoryService: CategoryService
     , private productService: ProductService
     , private router: Router
     , private activatedRoute: ActivatedRoute) {
 
+    //load the  catrories dropdwon
+    this.categoryService.Categories.subscribe(categories => {
 
-    this.categories$ = this.categorySrrvice.Categories;
+      this.categories = categories;
+
+    })
+
+
     let id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
+      this.productService.getProduct(id).pipe(take(1))
+        .subscribe(p => {
 
+          this.product = p;
+        })
 
     }
 

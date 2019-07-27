@@ -4,61 +4,44 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { ProductsComponent } from './products/products.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { CheckOutComponent } from './check-out/check-out.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { LoginComponent } from './login/login.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from 'src/environments/environment';
-import { AuthService } from './auth.service';
-import { AuthguardService } from './authguard.service';
-import { UserService } from './user.service';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { CategoryService } from './category.service';
-import { ProductService } from './product.service';
-import {
-  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatSortModule, MatTableModule
-} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './home/home.module';
+import { AdminModule } from './admin/admin.module';
+import { CheckOutModule } from './check-out/check-out.module';
+import { LoginModule } from './login/login.module';
+import { MyOrdersModule } from './my-orders/my-orders.module';
+import { ShoppingCartModule } from './shopping-cart/shopping-cart.module';
+import { NavbarModule } from './navbar/navbar.module';
+import { OrderSuccessModule } from './order-success/order-success.module';
+import { ProductsModule } from './products/products.module';
+import { AuthService } from './shared/auth.service';
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    ManageProductsComponent,
-    AdminOrdersComponent,
-    LoginComponent,
-    ProductFormComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     FormsModule,
-    MatTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    LoginModule,
+    HomeModule,
+    AdminModule,
+    CheckOutModule,
+    MyOrdersModule,
+    ShoppingCartModule,
+    NavbarModule,
+    OrderSuccessModule,
+    ProductsModule,
+
 
   ],
-  providers: [AuthService, AuthguardService, UserService, CategoryService
-    , ProductService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
